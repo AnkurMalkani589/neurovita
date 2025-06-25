@@ -6,6 +6,13 @@ if (menuToggle && navLinks) {
   menuToggle.addEventListener('click', () => {
     navLinks.classList.toggle('active');
   });
+
+  // Auto-close navbar on scroll
+  window.addEventListener('scroll', () => {
+    if (navLinks.classList.contains('active')) {
+      navLinks.classList.remove('active');
+    }
+  });
 }
 
 // Tooltip for Ingredients
