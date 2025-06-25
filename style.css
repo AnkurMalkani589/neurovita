@@ -2,10 +2,11 @@
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  padding: 0;
+  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
   scroll-behavior: smooth;
   background-color: #f5faff;
   color: #333;
+  box-sizing: border-box;
 }
 
 /* Header */
@@ -85,9 +86,8 @@ header {
 /* Sections */
 .section {
   padding: 60px 20px;
-  background-color: #f5fbff; /* soft bluish white */
+  background-color: #f5fbff;
 }
-
 
 .section h2 {
   font-size: 2rem;
@@ -103,7 +103,6 @@ header {
     font-size: 1.5rem;
   }
 }
-
 
 .benefits-grid {
   display: grid;
@@ -131,34 +130,32 @@ header {
   margin-bottom: 10px;
 }
 
-
 /* Ingredients */
 .ingredients-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
-  padding-top: 30px;
-}
-@media (max-width: 600px) {
-  .ingredient {
-    width: 100%;
-    max-width: 300px;
-  }
+  gap: 24px;
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .ingredient {
-  background: #e6f0ff; /* light blue background */
+  background: #e6f0ff;
   border-radius: 16px;
   padding: 20px;
   text-align: center;
   font-weight: 600;
   font-size: 1rem;
   width: 160px;
+  max-width: 300px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   position: relative;
+  margin: 0 auto;
 }
 
 .ingredient:hover {
@@ -169,10 +166,17 @@ header {
 .ingredient img {
   width: 70px;
   height: 70px;
-  margin-bottom: 12px;
+  margin: 0 auto 12px;
   object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .ingredient {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -201,90 +205,6 @@ header {
 }
 
 /* Testimonials */
-.testimonial-card {
-  background-color: #ffffff;
-  padding: 20px;
-  margin: 10px auto;
-  max-width: 500px;
-  border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-}
-
-/* Call to Action */
-.cta {
-  background-color: #0077cc;
-  color: white;
-}
-
-.cta .btn {
-  background-color: white;
-  color: #0077cc;
-}
-
-/* Contact Form */
-form {
-  max-width: 500px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-form input, form textarea {
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-form button {
-  padding: 12px;
-  background-color: #0077cc;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
-form button:hover {
-  background-color: #005fa3;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #f2f2f2;
-  font-size: 0.9rem;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    background: white;
-    position: absolute;
-    top: 65px;
-    right: 30px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    padding: 10px;
-  }
-
-  .nav-links.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .ingredients-container {
-    flex-direction: column;
-  }
-}
-
 .testimonials-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -329,6 +249,8 @@ footer {
   font-weight: 600;
   color: #0077cc;
 }
+
+/* Call to Action */
 .cta {
   padding: 80px 20px;
   background: url('images/cta-bg.jpg') no-repeat center center / cover;
@@ -340,22 +262,18 @@ footer {
   overflow: hidden;
 }
 
-
-
-
 .cta::before {
-  content: "";
+  content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0, 102, 204, 0.65); /* semi-transparent blue overlay */
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.25);
   z-index: 0;
 }
 
-.cta h2 {
-  color: #fff;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.4);
+.cta h2, .cta p, .cta a {
+  position: relative;
+  z-index: 1;
 }
-
 
 .cta .btn {
   background-color: #ffffff;
@@ -370,18 +288,8 @@ footer {
 .cta .btn:hover {
   background-color: #f2f2f2;
 }
-.cta::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.25); /* slight dark overlay */
-  z-index: 0;
-}
 
-.cta h2, .cta p, .cta a {
-  position: relative;
-  z-index: 1;
-}
+/* Contact Form */
 .contact-section {
   background-color: #f4faff;
   padding: 60px 20px;
@@ -420,6 +328,30 @@ footer {
 .contact-form button:hover {
   background-color: #005fa3;
 }
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: white;
+    position: absolute;
+    top: 65px;
+    right: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 10px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* Demo video */
 .demo-video {
   width: 100%;
   max-width: 800px;
@@ -431,27 +363,24 @@ footer {
 html {
   scroll-behavior: smooth;
 }
-/* iOS Full Width Safe Area Fix */
-body {
-  padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
-  box-sizing: border-box;
-}
-@media (min-width: 601px) and (max-width: 991px) {
+@media (max-width: 600px) {
   .ingredients-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 24px;
-    width: 100%;
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
+    gap: 20px;
+    padding: 0 20px;
   }
 
   .ingredient {
-    width: 90%;
+    width: 100%;
     max-width: 300px;
+    text-align: center;
     margin: 0 auto;
+  }
+
+  .ingredient img {
+    display: block;
+    margin: 0 auto 12px;
   }
 }
