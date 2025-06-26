@@ -66,3 +66,25 @@ if (contactForm) {
     this.reset();
   });
 }
+document.addEventListener("DOMContentLoaded", function () {
+  const video = document.getElementById('neuroVideo');
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const muteBtn = document.getElementById('muteBtn');
+
+  if (video && playPauseBtn && muteBtn) {
+    playPauseBtn.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        playPauseBtn.textContent = '⏸';
+      } else {
+        video.pause();
+        playPauseBtn.textContent = '▶️';
+      }
+    });
+
+    muteBtn.addEventListener('click', () => {
+      video.muted = !video.muted;
+      muteBtn.textContent = video.muted ? '🔇' : '🔊';
+    });
+  }
+});
