@@ -440,3 +440,15 @@ html {
     max-width: 160px;
   }
 }
+/* Hide default controls for non-iOS while keeping autoplay support */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video::-moz-media-controls {
+  display: none !important;
+}
+
+.video-wrapper video {
+  outline: none;
+}
