@@ -452,3 +452,25 @@ video::-moz-media-controls {
 .video-wrapper video {
   outline: none;
 }
+/* Hide native controls on all devices EXCEPT iOS */
+@supports (-webkit-touch-callout: none) {
+  /* This is iOS Safari - KEEP native controls visible */
+  video::-webkit-media-controls {
+    display: initial !important;
+  }
+}
+
+/* For other devices - HIDE native controls */
+@media not all and (hover: none) and (pointer: coarse) {
+  video::-webkit-media-controls {
+    display: none !important;
+  }
+
+  video::-moz-media-controls {
+    display: none !important;
+  }
+
+  .video-wrapper video {
+    outline: none;
+  }
+}
