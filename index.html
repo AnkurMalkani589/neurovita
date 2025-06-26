@@ -38,13 +38,16 @@
     <a href="#buy" class="btn">Buy Now</a>
   </section>
    <!-- video -->
-<section class="section" id="demo" data-aos="fade-up">
-  <h2>See NeuroVita in Action</h2>
-  <video class="demo-video" autoplay muted playsinline loop>
+<div class="video-wrapper">
+  <video id="neuroVideo" playsinline muted autoplay loop>
     <source src="videos/neurovita.mp4" type="video/mp4">
     Your browser does not support the video tag.
   </video>
-</section>
+  <div class="video-controls">
+    <button id="playPauseBtn">⏸</button>
+    <button id="muteBtn">🔇</button>
+  </div>
+</div>
 
   <!-- Benefits Section -->
   <section id="benefits" class="section" data-aos="fade-up">
