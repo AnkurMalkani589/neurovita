@@ -40,7 +40,7 @@ if (tooltip) {
   });
 }
 
-// Contact Form Validation
+// Contact Form Validation (Optional: only if you have these IDs in your form)
 const contactForm = document.querySelector('.contact-form');
 
 if (contactForm) {
@@ -66,8 +66,6 @@ if (contactForm) {
     this.reset();
   });
 }
-
-// Custom Video Controls
 document.addEventListener("DOMContentLoaded", function () {
   const video = document.getElementById('neuroVideo');
   const playPauseBtn = document.getElementById('playPauseBtn');
@@ -89,27 +87,4 @@ document.addEventListener("DOMContentLoaded", function () {
       muteBtn.textContent = video.muted ? '🔇' : '🔊';
     });
   }
-});
-
-// Scroll-triggered animation for visibility
-function animateOnScroll() {
-  const elements = document.querySelectorAll('.section, .cta, .testimonial-card, .ingredient');
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Animate once
-      }
-    });
-  }, {
-    threshold: 0.15,
-  });
-
-  elements.forEach(el => observer.observe(el));
-}
-
-// Run animation logic when DOM is ready
-document.addEventListener('DOMContentLoaded', () => {
-  animateOnScroll();
 });
