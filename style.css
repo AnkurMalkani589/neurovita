@@ -613,3 +613,27 @@ video::-moz-media-controls {
   border: 1px solid #e0e0e0; /* subtle border for definition */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 } style.css
+.nav-links li a {
+  position: relative;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px; /* position it just below the text */
+  width: 100%;
+  height: 2px;
+  background-color: #0077cc; /* underline color */
+  transform: scaleX(0); /* start with no width */
+  transform-origin: left; /* scale from left to right */
+  transition: transform 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+  transform: scaleX(1); /* fully expands the underline */
+}
