@@ -683,3 +683,8 @@ video::-moz-media-controls {
 .nav-links li a:hover::after {
   transform: scaleX(1); /* fully expands the underline */
 }
+.wave-divider {
+  position: relative;
+  top: -1px;
+  z-index: 2;
+}
